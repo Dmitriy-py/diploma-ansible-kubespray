@@ -1,0 +1,46 @@
+
+
+---
+
+kube_version: "1.35.4"
+
+cluster_name: "my-k8s-cluster"
+
+kube_pods_subnet: "10.233.64.0/18"
+kube_service_addresses: "10.233.0.0/18"
+
+kube_control_plane_ip: "10.10.1.21"
+
+cluster_external_ip: "93.77.180.95"
+
+kube_api_server_endpoint: "{{ cluster_external_ip }}:6443"
+loadbalancer_apiserver_port: 6443
+
+docker_engine: "containerd"
+
+kube_network_plugin: "flannel"
+flannel_backend_type: "vxlan"
+flannel_subnet_backend: "10.233.64.0/24"
+
+ingress_nginx_enabled: true
+ingress_nginx_nodeselect_default: true
+ingress_nginx_controller_service_type: "LoadBalancer"
+ingress_nginx_http_port:
+ingress_nginx_https_port: 443
+
+bin_dir: "/usr/local/bin"
+ansible_user: "ubuntu"
+
+cert_management: script
+
+kube_control_plane_group: "kube_control_plane"
+etcd_group: "etcd"
+
+swap_off: true
+
+ping_access_ip: true
+
+allow_unsupported_distribution_setup: true
+
+supplementary_addresses_in_ssl_keys: [93.77.180.95]
+apiserver_cert_extra_sans: [93.77.180.95]
